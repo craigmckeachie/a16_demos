@@ -2,7 +2,12 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: ` Ready `,
-  styles: [],
+  template: `
+     <input [(ngModel)]="message" type="text">
+     <p>{{message}}</p>
+  `,
+  styles: []
 })
-export class AppComponent {}
+export class AppComponent {
+  message = '';
+}
