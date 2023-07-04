@@ -2,7 +2,16 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: ` Ready `,
+  template: `
+    <ul>
+      <li *ngFor="let fruit of fruits; let i = index">
+        {{ i + 1 }}.
+        {{ fruit }}
+      </li>
+    </ul>
+  `,
   styles: [],
 })
-export class AppComponent {}
+export class AppComponent {
+  fruits: string[] = ['Apple', 'Orange', 'Plum'];
+}
