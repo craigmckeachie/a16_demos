@@ -20,9 +20,11 @@ export class AppComponent implements OnInit {
   errorMessage?: string | null;
   constructor(private photoService: PhotoService) {}
   ngOnInit(): void {
-    this.photoService.getAll().subscribe(
-      (data) => (this.photos = data),
-      (error) => (this.errorMessage = error)
-    );
+    let observer = {
+      next: (data) => (this.photos = data),
+      error: (error) => (this.errorMessage = error),
+    };
+
+    this.photoService.getAll().subscribe(observer);
   }
 }

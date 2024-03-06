@@ -14,7 +14,9 @@ export class PhotoService {
     return this.http.get<Photo[]>('http://localhost:3000/photos/wrong').pipe(
       catchError((error: HttpErrorResponse) => {
         console.log(error);
-        return throwError('An error occured loading the photos.');
+        return throwError(
+          () => new Error('An error occured loading the photos.')
+        );
       })
     );
   }
